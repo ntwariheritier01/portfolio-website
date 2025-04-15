@@ -1,0 +1,50 @@
+<section id="blog" class="blogg">
+    <div class="blog-container">
+        <div class="blog-box">
+            <h3 class="heading">Welcome <span>Blog</span></h3>
+            <div id="blog-posts"> </div>
+</section>
+</div>
+</div>
+
+<script>
+    const blogPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
+    const blogContainer = document.getElementById("blog-posts");
+    blogPosts.forEach(post => {
+        blogContainer.innerHTML += `
+        <div class="blog-post">
+            <h3>${post.title}</h3>
+            <p>${post.date}</p>
+            <p>${post.content.substring(0, 100)}...</p>
+            <button onclick='delet()' class="btn">delete</button>
+        </div>`;
+    });
+    function delet() {
+        localStorage.removeItem("blogPosts", JSON.stringify(blogPosts));
+        alert("Blog post deleted successfully!");
+    }
+</script>
+<section id="dashboard" class="blog">
+    <form id="blog-form">
+        <div class="input-box">
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="date" id="date" required>
+        </div>
+        <textarea id="content" placeholder="Content" required></textarea>
+        <button type="submit" class="btn">Add Post</button>
+    </form>
+</section>
+<script>
+    const form = document.getElementById("blog-form");
+    form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const title = document.getElementById("title").value;
+        const date = document.getElementById("date").value;
+        const content = document.getElementById("content").value;
+        const newPost = { title, date, content };
+        blogPosts.push(newPost);
+        localStorage.setItem("blogPosts", JSON.stringify(blogPosts));
+        alert("Blog post added successfully!");
+        location.reload();
+    });
+</script>
