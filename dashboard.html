@@ -1,3 +1,4 @@
+<a href="index.html">home</a>
 <section id="blog" class="blogg">
     <div class="blog-container">
         <div class="blog-box">
@@ -6,6 +7,35 @@
 </section>
 </div>
 </div>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Blog Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .blog-post {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .blog-post h3 {
+            margin-top: 0;
+        }
+        .btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
 
 <script>
     const blogPosts = JSON.parse(localStorage.getItem("blogPosts")) || [];
